@@ -138,8 +138,8 @@ textarea {
         padding: 25px 25px;
     }
 
-    h1 {
-        font-size: 1.0em;
+    .header h1 {
+        font-size: 1.2em;
     }
     h2, h3 {
         font-size: 1.2em;
