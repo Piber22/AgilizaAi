@@ -28,7 +28,7 @@ h1, h2, h3 {
 
 section {
     background-color: #201F20;
-    padding: 25px 70px; /* Aumentamos o padding interno lateral */
+    padding: 25px 30px; /* Aumentamos o padding interno lateral */
     margin: 10px auto;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.6);
@@ -101,4 +101,17 @@ textarea {
     margin-top: 20px;
     font-size: 14px;
     color: #777;
+}
+@media (max-width: 768px) {
+   section {
+     margin: 10px 20px;
+     padding: 25px 20px; /* Aumentamos o padding interno lateral */
+}
+
+  h1{
+    font-size: 1.2em;
+}
+  h2{
+    font-size: 1.2em;
+}
 }
