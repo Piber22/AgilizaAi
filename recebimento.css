@@ -28,7 +28,7 @@ h1, h2, h3 {
 
 section {
     background-color: #201F20;
-    padding: 25px 70px; /* Aumentamos o padding interno lateral */
+    padding: 25px 70px; /* Aumentamos o padding interno lateral  */
     margin: 10px auto;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.6);
