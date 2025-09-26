@@ -138,9 +138,8 @@ textarea {
         padding: 25px 25px;
     }
 
-    .header h1 {
-      text-align: center;
-      font-size: 1.2em;
+    h1 {
+        font-size: 1.0em;
     }
     h2, h3 {
         font-size: 1.2em;
