@@ -26,13 +26,17 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    width: 100%; /* Cabeçalho ocupa toda a largura */
+    padding: 10px 20px;
+    background-color: #201F20;
     position: relative;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .logo-link {
     position: absolute;
-    left: 0;
+    left: 20px; /* Mantém a logo alinhada à esquerda */
 }
 
 .logo {
@@ -40,10 +44,10 @@ main {
     height: auto;
 }
 
-/* Título centralizado */
 .header h1 {
     text-align: center;
     font-size: 1.8em;
+    margin: 0;
 }
 
 /* SEÇÕES */
@@ -147,5 +151,9 @@ textarea {
 
     .logo {
         width: 40px;
+    }
+
+    .logo-link {
+        left: 10px;
     }
 }
