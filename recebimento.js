@@ -86,8 +86,7 @@ document.getElementById("copiarBtn").addEventListener("click", function() {
     navigator.clipboard.writeText(textarea.value)
         .then(() => {
             alert("Mensagem copiada com sucesso! ✅");
-            // Após copiar, enviar para Google Sheets
-            enviarParaSheets();
+            enviarParaSheets(); // enviar após copiar
         })
         .catch(err => {
             console.error("Erro ao copiar: ", err);
@@ -95,21 +94,17 @@ document.getElementById("copiarBtn").addEventListener("click", function() {
         });
 });
 
-// Função para enviar dados para Google Sheets via Web App
+// Envio para Sheets via GET
 function enviarParaSheets() {
-    // Pegar valores
     const dataInput = document.getElementById("dataRecebimento").value || "";
     const responsavel = document.getElementById("responsavel").value || "DEIVID";
 
     const lencolQtd = document.getElementById("lencolQtd").value || 0;
     const lencolPeso = document.getElementById("lencolPeso").value || 0;
-
     const camisolaQtd = document.getElementById("camisolaQtd").value || 0;
     const camisolaPeso = document.getElementById("camisolaPeso").value || 0;
-
     const cobertorQtd = document.getElementById("cobertorQtd").value || 0;
     const cobertorPeso = document.getElementById("cobertorPeso").value || 0;
-
     const fronhaQtd = document.getElementById("fronhaQtd").value || 0;
     const fronhaPeso = document.getElementById("fronhaPeso").value || 0;
 
@@ -136,10 +131,9 @@ function enviarParaSheets() {
         parseFloat(calcaPeso)
     ).toFixed(2);
 
-    // Montar objeto para envio
-    const dados = {
+    const params = new URLSearchParams({
         data: dataInput,
-        responsavel: responsavel,
+        responsavel,
         lencolQtd, lencolPeso,
         camisolaQtd, camisolaPeso,
         cobertorQtd, cobertorPeso,
@@ -147,27 +141,12 @@ function enviarParaSheets() {
         jalecoP, jalecoM, jalecoG, jalecoGG, jalecoEG, jalecoPeso,
         calcaP, calcaM, calcaG, calcaGG, calcaEG, calcaPeso,
         pesoTotal
-    };
-
-    console.log("Dados a enviar para Sheets:", dados);
-
-    // Substitua pela URL do seu Web App
-    const url = "https://script.google.com/macros/s/AKfycbxRaYHcNLoO5vOcew6cFjU0-2TorjE_F6qher0n5RUfXm--wcx-0EwenRmmR8PiBuIo/exec";
-
-    fetch(url, {
-        method: "POST",
-        body: JSON.stringify(dados),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(response => {
-        console.log("Status HTTP:", response.status);
-        return response.text();
-    })
-    .then(text => {
-        console.log("Resposta do servidor:", text);
-    })
-    .catch(err => {
-        console.error("Erro ao enviar para Sheets:", err);
-        alert("Erro ao enviar dados para Sheets ❌");
     });
+
+    const url = "https://script.google.com/macros/s/SEU_WEBAPP_ID/exec?" + params.toString();
+
+    fetch(url)
+        .then(res => res.json())
+        .then(res => console.log("Dados enviados com sucesso:", res))
+        .catch(err => console.error("Erro ao enviar para Sheets ❌", err));
 }
