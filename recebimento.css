@@ -135,7 +135,7 @@ textarea {
     color: #777;
 }
 
-/* RESPONSIVO  */
+/* RESPONSIVO */
 @media (max-width: 768px) {
     section {
         margin: 10px 20px;
