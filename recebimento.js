@@ -152,7 +152,7 @@ function enviarParaSheets() {
     console.log("Dados a enviar para Sheets:", dados);
 
     // Substitua pela URL do seu Web App
-    const url = "https://script.google.com/macros/s/AKfycbxmlnNknBY3HNEFFksFGJoRweHQhSLYPVEta-QNgT0WEl4OCDw2UBapbTKdw9xYuxU9/exec";
+    const url = "https://script.google.com/macros/s/AKfycbxRaYHcNLoO5vOcew6cFjU0-2TorjE_F6qher0n5RUfXm--wcx-0EwenRmmR8PiBuIo/exec";
 
     fetch(url, {
         method: "POST",
