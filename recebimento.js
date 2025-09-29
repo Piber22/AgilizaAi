@@ -149,7 +149,7 @@ function enviarParaSheets() {
         pesoTotal
     };
 
-    // Substitua a URL abaixo pela do seu Web App do Google Apps Script
+    //  Substitua a URL abaixo pela do seu Web App do Google Apps Script
     const url = "https://script.google.com/macros/s/AKfycbxSg2thZCDZRI9spjwtENg4pT0x43dUmn-loIAklaRxuAh9-PCD87TDZYuhAfc7INp4/exec";
 
     fetch(url, {
