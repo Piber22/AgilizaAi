@@ -149,19 +149,25 @@ function enviarParaSheets() {
         pesoTotal
     };
 
-    //  Substitua a URL abaixo pela do seu Web App do Google Apps Script
-    const url = "https://script.google.com/macros/s/AKfycbxSg2thZCDZRI9spjwtENg4pT0x43dUmn-loIAklaRxuAh9-PCD87TDZYuhAfc7INp4/exec";
+    console.log("Dados a enviar para Sheets:", dados);
+
+    // Substitua pela URL do seu Web App
+    const url = "https://script.google.com/macros/s/AKfycbxmlnNknBY3HNEFFksFGJoRweHQhSLYPVEta-QNgT0WEl4OCDw2UBapbTKdw9xYuxU9/exec";
 
     fetch(url, {
         method: "POST",
         body: JSON.stringify(dados),
         headers: { "Content-Type": "application/json" }
     })
-    .then(response => response.json())
-    .then(res => {
-        console.log("Dados enviados com sucesso:", res);
+    .then(response => {
+        console.log("Status HTTP:", response.status);
+        return response.text();
+    })
+    .then(text => {
+        console.log("Resposta do servidor:", text);
     })
     .catch(err => {
         console.error("Erro ao enviar para Sheets:", err);
+        alert("Erro ao enviar dados para Sheets ❌");
     });
 }
