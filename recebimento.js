@@ -1,3 +1,6 @@
+// Variável global para armazenar os dados que serão enviados
+let dadosRecebimento = {};
+
 // Função para gerar a mensagem
 document.getElementById("gerarBtn").addEventListener("click", function() {
     // Data
@@ -72,9 +75,32 @@ document.getElementById("gerarBtn").addEventListener("click", function() {
     msg += `💯 PESO TOTAL: ${pesoTotal}`;
 
     document.getElementById("resultado").value = msg;
+
+    // Armazenar todos os dados em objeto global
+    dadosRecebimento = {
+        data: dataStr,
+        responsavel,
+        lencolQtd, lencolPeso,
+        camisolaQtd, camisolaPeso,
+        cobertorQtd, cobertorPeso,
+        fronhaQtd, fronhaPeso,
+        jalecoP: jaleco.P,
+        jalecoM: jaleco.M,
+        jalecoG: jaleco.G,
+        jalecoGG: jaleco.GG,
+        jalecoEG: jaleco.EG,
+        jalecoPeso: jaleco.Peso,
+        calcaP: calca.P,
+        calcaM: calca.M,
+        calcaG: calca.G,
+        calcaGG: calca.GG,
+        calcaEG: calca.EG,
+        calcaPeso: calca.Peso,
+        pesoTotal
+    };
 });
 
-// Botão copiar + envio para Sheets
+// Botão copiar
 document.getElementById("copiarBtn").addEventListener("click", function() {
     const textarea = document.getElementById("resultado");
     if (textarea.value.trim() === "") {
@@ -86,67 +112,13 @@ document.getElementById("copiarBtn").addEventListener("click", function() {
     navigator.clipboard.writeText(textarea.value)
         .then(() => {
             alert("Mensagem copiada com sucesso! ✅");
-            enviarParaSheets(); // enviar após copiar
+            // Enviar dados para envio.js
+            if (typeof enviarParaSheets === "function") {
+                enviarParaSheets(dadosRecebimento);
+            }
         })
         .catch(err => {
             console.error("Erro ao copiar: ", err);
             alert("Não foi possível copiar a mensagem.");
         });
 });
-
-// Envio para Sheets via GET
-function enviarParaSheets() {
-    const dataInput = document.getElementById("dataRecebimento").value || "";
-    const responsavel = document.getElementById("responsavel").value || "DEIVID";
-
-    const lencolQtd = document.getElementById("lencolQtd").value || 0;
-    const lencolPeso = document.getElementById("lencolPeso").value || 0;
-    const camisolaQtd = document.getElementById("camisolaQtd").value || 0;
-    const camisolaPeso = document.getElementById("camisolaPeso").value || 0;
-    const cobertorQtd = document.getElementById("cobertorQtd").value || 0;
-    const cobertorPeso = document.getElementById("cobertorPeso").value || 0;
-    const fronhaQtd = document.getElementById("fronhaQtd").value || 0;
-    const fronhaPeso = document.getElementById("fronhaPeso").value || 0;
-
-    const jalecoP = document.getElementById("jalecoP").value || 0;
-    const jalecoM = document.getElementById("jalecoM").value || 0;
-    const jalecoG = document.getElementById("jalecoG").value || 0;
-    const jalecoGG = document.getElementById("jalecoGG").value || 0;
-    const jalecoEG = document.getElementById("jalecoEG").value || 0;
-    const jalecoPeso = document.getElementById("jalecoPeso").value || 0;
-
-    const calcaP = document.getElementById("calcaP").value || 0;
-    const calcaM = document.getElementById("calcaM").value || 0;
-    const calcaG = document.getElementById("calcaG").value || 0;
-    const calcaGG = document.getElementById("calcaGG").value || 0;
-    const calcaEG = document.getElementById("calcaEG").value || 0;
-    const calcaPeso = document.getElementById("calcaPeso").value || 0;
-
-    const pesoTotal = (
-        parseFloat(lencolPeso) +
-        parseFloat(camisolaPeso) +
-        parseFloat(cobertorPeso) +
-        parseFloat(fronhaPeso) +
-        parseFloat(jalecoPeso) +
-        parseFloat(calcaPeso)
-    ).toFixed(2);
-
-    const params = new URLSearchParams({
-        data: dataInput,
-        responsavel,
-        lencolQtd, lencolPeso,
-        camisolaQtd, camisolaPeso,
-        cobertorQtd, cobertorPeso,
-        fronhaQtd, fronhaPeso,
-        jalecoP, jalecoM, jalecoG, jalecoGG, jalecoEG, jalecoPeso,
-        calcaP, calcaM, calcaG, calcaGG, calcaEG, calcaPeso,
-        pesoTotal
-    });
-
-    const url = "https://script.google.com/macros/s/SEU_WEBAPP_ID/exec?" + params.toString();
-
-    fetch(url)
-        .then(res => res.json())
-        .then(res => console.log("Dados enviados com sucesso:", res))
-        .catch(err => console.error("Erro ao enviar para Sheets ❌", err));
-}
