@@ -1,6 +1,6 @@
-/*
- * ESTILOS BASE (MANTIDOS CONSISTENTES COM SEU CSS)
- */
+/* =====================
+   RESET & BASE
+===================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,128 +14,140 @@ body {
     color: #fff;
     display: flex;
     flex-direction: column;
-    /* Alinha o conteúdo à esquerda/centro, permitindo o scroll horizontal */
     align-items: center;
-    padding: 20px 10px 40px 10px; /* Adiciona padding para margem de segurança */
+    padding-bottom: 40px;
 }
 
-h1 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 25px;
-    color: #E94B22; /* Destaca o título com a cor principal */
-    text-shadow: 0 0 5px rgba(233, 75, 34, 0.5); /* Sombra suave para destacar */
-}
-
-/* Estilo para a mensagem de carregamento */
-#loading {
-    font-size: 1.2em;
-    color: #fff;
-    padding: 15px;
-    background-color: #333;
-    border: 1px solid #E94B22;
-    border-radius: 6px;
-    margin-top: 20px;
-    box-shadow: 0 0 8px rgba(233, 75, 34, 0.4);
-}
-
-/*
- * ESTILOS DA TABELA DE CONSULTA
- */
-
-/* Container Responsivo para a Tabela */
-.table-container {
-    width: 98%;
-    max-width: 1500px; /* Largura máxima para monitores grandes */
-    overflow-x: auto; /* ESSENCIAL: Permite a rolagem horizontal em telas pequenas */
-    background-color: #2a2a2a; /* Fundo ligeiramente mais claro que o body */
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-    padding: 10px;
-}
-
-#tabela {
+main {
     width: 100%;
-    min-width: 1500px; /* Garante que a tabela tenha um tamanho mínimo para rolar */
-    border-collapse: separate;
-    border-spacing: 0;
-    margin: 0 auto;
+    max-width: 600px;
+    margin-top: 0px;
 }
 
-/* Cabeçalho da Tabela (Thead) */
-#tabela thead {
+/* =====================
+   HEADER / TÍTULO
+===================== */
+.header {
+    font-size: 1.0em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Cabeçalho ocupa toda a largura */
+    padding: 10px 20px;
+    background-color: #201F20;
+    position: relative;
+    margin-bottom: 0px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+
+.logo-link {
+    position: absolute;
+    left: 60px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* =====================
+   SEÇÃO DE CONSULTA
+===================== */
+section {
+    background-color: #201F20;
+    padding: 25px 30px;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* =====================
+   LOADING
+===================== */
+#loading {
+    font-size: 16px;
+    color: #ccc;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* =====================
+   TABELA DE RECEBIMENTOS
+===================== */
+.table-container {
+    width: 100%;
+    max-width: 95%;
+    overflow-x: auto;
+    background: #201F20;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+thead {
+    background: #E94B22;
+    color: #fff;
     position: sticky;
     top: 0;
-    background-color: #E94B22; /* Cor principal de destaque */
-    color: #fff;
-    z-index: 10;
+    z-index: 2;
 }
 
-#tabela th {
-    padding: 10px 8px;
+thead th {
+    padding: 10px;
     text-align: center;
-    font-weight: bold;
-    font-size: 0.85em;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 3px solid #b3391b; /* Linha de separação mais forte */
+    font-weight: 700;
+    border: 1px solid #2a2a2a;
 }
 
-/* Arredonda as bordas do cabeçalho */
-#tabela thead tr th:first-child {
-    border-top-left-radius: 8px;
-}
-#tabela thead tr th:last-child {
-    border-top-right-radius: 8px;
-}
-
-/* Corpo da Tabela (Tbody) */
-#tabela tbody tr {
-    transition: background-color 0.3s ease;
-}
-
-#tabela tbody tr:nth-child(even) {
-    background-color: #2c2c2c; /* Cor de Listra Zebra */
-}
-
-#tabela tbody tr:hover {
-    background-color: #444; /* Destaque sutil ao passar o mouse */
-    cursor: default;
-}
-
-#tabela td {
+tbody td {
     padding: 8px;
     text-align: center;
-    border-bottom: 1px solid #3a3a3a; /* Linha divisória sutil */
-    font-size: 0.8em; /* Fonte menor para caber mais informação */
-    white-space: nowrap; /* Impede a quebra de linha dentro da célula */
+    border: 1px solid #2a2a2a;
+    color: #ddd;
 }
 
-/* Destaque para as colunas importantes (Peso Total e Data) */
-#tabela th:nth-child(1),
-#tabela td:nth-child(1),
-#tabela th:last-child,
-#tabela td:last-child {
-    font-weight: bold;
-    color: #E94B22; /* Cor de destaque */
+tbody tr:nth-child(even) {
+    background: #252525;
 }
 
-/*
- * TRATAMENTO RESPONSIVO PARA O TÍTULO E LOADING
- */
+tbody tr:nth-child(odd) {
+    background: #1a1a1a;
+}
 
+tbody tr:hover {
+    background: #333;
+}
+
+/* =====================
+   RESPONSIVO
+===================== */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 1.5em;
-        margin-bottom: 20px;
+    .header h1 {
+        font-size: 1.4em;
+        padding: 8px 16px;
     }
-
-    /* Reduz o padding para maximizar o espaço da tabela */
-    body {
-        padding: 10px 0 30px 0;
+    table {
+        font-size: 12px;
     }
+    thead th, tbody td {
+        padding: 6px;
+    }
+}
 
-    .table-container {
-        width: 100%;
-        padding: 5px;
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.2em;
+        padding: 6px 12px;
+    }
+    table {
+        font-size: 11px;
     }
 }
