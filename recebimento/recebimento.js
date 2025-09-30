@@ -105,7 +105,7 @@ document.getElementById("gerarBtn").addEventListener("click", function() {
     msg += `👖 GG ${calca.GG} ${validar(calca.GG, valoresMinimos.calcaGG)}\n`;
     msg += `👖 EG ${calca.EG} ${validar(calca.EG, valoresMinimos.calcaEG)}\n`;
     msg += `🧮 Peso: ${calca.Peso}\n\n`;
-    msg += `💯 PESO TOTAL: ${pesoTotal}`;
+    msg += `⚖️ PESO TOTAL: ${pesoTotal}`;
 
     document.getElementById("resultado").value = msg;
 

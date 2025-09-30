@@ -4,43 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Recebimentos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="consulta.css">
 </head>
 <body>
     <h1>Consulta de Recebimentos</h1>
 
     <p id="loading">Carregando...</p>
 
-    <table border="1" id="tabela" style="display: none;">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Responsável</th>
-                <th>Lençol Qtd</th>
-                <th>Lençol Peso</th>
-                <th>Camisola Qtd</th>
-                <th>Camisola Peso</th>
-                <th>Cobertor Qtd</th>
-                <th>Cobertor Peso</th>
-                <th>Fronha Qtd</th>
-                <th>Fronha Peso</th>
-                <th>Jaleco P</th>
-                <th>Jaleco M</th>
-                <th>Jaleco G</th>
-                <th>Jaleco GG</th>
-                <th>Jaleco EG</th>
-                <th>Jaleco Peso</th>
-                <th>Calça P</th>
-                <th>Calça M</th>
-                <th>Calça G</th>
-                <th>Calça GG</th>
-                <th>Calça EG</th>
-                <th>Calça Peso</th>
-                <th>Peso Total</th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table border="1" id="tabela" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Responsável</th>
+                    <th>Lençol Qtd</th>
+                    <th>Lençol Peso</th>
+                    <th>Camisola Qtd</th>
+                    <th>Camisola Peso</th>
+                    <th>Cobertor Qtd</th>
+                    <th>Cobertor Peso</th>
+                    <th>Fronha Qtd</th>
+                    <th>Fronha Peso</th>
+                    <th>Jaleco P</th>
+                    <th>Jaleco M</th>
+                    <th>Jaleco G</th>
+                    <th>Jaleco GG</th>
+                    <th>Jaleco EG</th>
+                    <th>Jaleco Peso</th>
+                    <th>Calça P</th>
+                    <th>Calça M</th>
+                    <th>Calça G</th>
+                    <th>Calça GG</th>
+                    <th>Calça EG</th>
+                    <th>Calça Peso</th>
+                    <th>Peso Total</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
