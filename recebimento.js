@@ -21,7 +21,7 @@ const valoresMinimos = {
 
 // Função para validar e retornar indicador
 function validar(valor, minimo) {
-    return valor >= minimo ? '🟢' : '🔴';
+    return valor >= minimo ? '🟢' : '🟡';
 }
 
 // Função para gerar a mensagem
