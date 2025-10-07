@@ -1,3 +1,4 @@
+console.log("✅ Script carregado!");
 // Variável global para armazenar os dados
 let dadosRecebimento = {};
 
