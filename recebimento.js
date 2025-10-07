@@ -86,7 +86,7 @@ document.getElementById("gerarBtn").addEventListener("click", function() {
     ).toFixed(2);
 
     // Montar mensagem COM VALIDAÇÃO
-    let msg = `👕 ROUPARIA ${responsavel.toUpperCase()}👕\n📋 Enxoval recebido ${dataStr}\n`;
+    let msg = `👕 ROUPARIA ${responsavel.toUpperCase()} 👕\n📋 Enxoval recebido ${dataStr}\n`;
     msg += `📌 Lençol ${lencolQtd} ${validar(lencolQtd, valoresMinimos.lencol)} ( peso ${lencolPeso} )\n`;
     msg += `📌 Camisola ${camisolaQtd} ${validar(camisolaQtd, valoresMinimos.camisola)} ( peso ${camisolaPeso} )\n`;
     msg += `📌 Cobertor ${cobertorQtd} ${validar(cobertorQtd, valoresMinimos.cobertor)} ( peso ${cobertorPeso} )\n`;
